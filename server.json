@@ -2,8 +2,8 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "com.stocksscores/stocksscores",
   "title": "StocksScores",
-  "description": "0–100 scores for ~4,100 US stocks: score a ticker, screen by score and sector, list top scorers.",
-  "version": "1.0.0",
+  "description": "0–100 scores for ~4,100 US stocks: score, screen, compare, top scorers and score history.",
+  "version": "1.1.0",
   "websiteUrl": "https://stocksscores.com/posts/43/",
   "repository": {
     "url": "https://github.com/tomerfooks/stocksscores-mcp",
@@ -17,7 +17,7 @@
       "headers": [
         {
           "name": "Authorization",
-          "description": "Optional. 'Bearer ss_…' personal API key from app.stocksscores.com/developers: 500 calls a day instead of 10, plus alert and watchlist tools.",
+          "description": "Optional. 'Bearer ss_…' personal API key from app.stocksscores.com/developers: 500 calls a day instead of the anonymous 10 live / 100 nightly, plus alert and watchlist tools.",
           "isRequired": false,
           "isSecret": true
         }

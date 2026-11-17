@@ -71,8 +71,9 @@ curl -s https://api.stocksscores.com/mcp -H 'Content-Type: application/json' \
 | Tool | What it returns | Freshness |
 | --- | --- | --- |
 | `get_stock_analysis` | One symbol: the composite 0–100, its three pillars, the technical score per timeframe, every sub-score, the current quote | Live, cached 2 h |
-| `screen_stocks` | Filter last night's scores by `minScore` / `maxScore` / `sector` — compact rows, best first (max 200) | Nightly |
+| `screen_stocks` | Filter last night's scores by `minScore` / `maxScore` / `sector`, or compare up to 50 named `symbols` in one call — compact rows, best first (max 200), each with its 7-day score change | Nightly |
 | `top_scores` | The highest-scoring investable names right now | Nightly |
+| `get_score_history` | One symbol's nightly score for up to 365 days, with its pillars, the price the batch saw, and the 7- and 30-day change | Nightly |
 
 With a personal API key (below) the server also lists eight account tools: `list_alerts`, `create_alert`,
 `update_alert`, `delete_alert` (email price alerts) and `list_watchlists`, `create_watchlist`,
@@ -85,7 +86,8 @@ Every score is 0–100, higher is more bullish: 0–39 bearish, 40–49 weak, 50
 
 | | Tool calls |
 | --- | --- |
-| Anonymous (per IP) | 1 a minute, 10 a day |
+| Anonymous (per IP), `get_stock_analysis` — computed live | 1 a minute, 10 a day |
+| Anonymous (per IP), every other tool — nightly reads | 10 a minute, 100 a day |
 | Personal API key | 30 a minute, 500 a day |
 
 Only `tools/call` is metered — the handshake and `tools/list` are free. A key is free: sign in at
